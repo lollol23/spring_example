@@ -1,27 +1,19 @@
-package com.lollol23.spring;
-
-import java.io.IOException;
+package com.lollol23.spring.config;
 
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-@SpringBootApplication
-//@MapperScan(basePackages = "com.lollol23.spring")
-public class SprinExampleApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SprinExampleApplication.class, args);
-	}
-	
-	/*@Bean
+@Configuration
+@MapperScan(basePackages = "com.lollol23.spring.*")
+public class DatabaseConfig {
+	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(datasource);
@@ -30,5 +22,5 @@ public class SprinExampleApplication {
 		sessionFactory.setMapperLocations(res);
 		
 		return sessionFactory.getObject();
-	}*/
+	}
 }
